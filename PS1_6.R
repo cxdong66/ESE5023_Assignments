@@ -35,15 +35,15 @@ for(i in Shenzhen_VIS_Day1){
   SHenzhen_VIS_MaxPerDay <- c(SHenzhen_VIS_MaxPerDay , max(Shenzhen_VIS_value[which(Obs_Time == as.Date(as.character(i),"%Y%m%d"))],na.rm = T))
 }
 #plot the max value per day
-dev.new()
+dev.next()
 plot(Shenzhen_VIS_Day, SHenzhen_VIS_MaxPerDay, lwd=1, type = "l", col="blue")
 
 #Report the number of days with visibility by plot the histograms 
 Year <- as.numeric(substr(Shenzhen_VIS_Day,1,4))
-dev.new()
+dev.next()
 par(mfrow=c(2,5),new = TRUE) 
 for(i in 2010:2020){
-  hist(as.numeric(SHenzhen_VIS_MaxPerDay[which(Year == i)]),breaks = c(0,5000,10000,15000,20000,25000,30000), right = FALSE, labels = TRUE,main = NA, xlab = "VIS Value",ylab = "Frequncy")
+  hist(as.numeric(SHenzhen_VIS_MaxPerDay[which(Year == i)]),breaks = c(0,5000,10000,15000,20000,25000,30000), right = FALSE, labels = TRUE,main = NA, xlab = "VIS Value",ylab = "Frequncy",ylim = c(0,350))
   title("The VIS Histogram", sub = i)
 }
 #The visibility is getting better, except the 2020.
